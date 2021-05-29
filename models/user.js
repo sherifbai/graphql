@@ -15,16 +15,16 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    first_name: {
+    firstName: {
         type: String
     },
-    last_name: {
+    lastName: {
         type: String
     },
     patronymic: {
         type: String
     },
-    birth_date: {
+    birthDate: {
         type: String
     },
     isManager: {
