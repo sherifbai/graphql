@@ -1,6 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const { graphqlHttp } = require('express-graphql')
+
+
+const graphqlSchema = require('./graphql/schema')
+const graphqlResolves = require('./graphql/resolvers')
+
 
 const app = express()
 
@@ -12,6 +18,12 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 })
+
+
+app.use('/graphql', graphqlHttp({
+    schema: graphqlSchema,
+    rootValue: graphqlResolves
+}))
 
 
 app.use(function (error, req, res, next) {
