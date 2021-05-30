@@ -15,6 +15,7 @@ module.exports = buildSchema(`
         isBan: Boolean!
     }
     
+    
     input UserInputData {
         login: String!
         email: String!
@@ -25,16 +26,24 @@ module.exports = buildSchema(`
         birthDate: String!
     }
     
+    type AuthData {
+        token: String!
+        userId: String!
+    }
+    
     type UserReturn {
         login: String!
         email: String!
     }
     
+    
+    
     type RootQuery {
-        findUser(login: String! isManager: Boolean! isBan: Boolean!): [UserReturn!]!
+        findUser(login: String!, isManager: Boolean!, isBan: Boolean!): [UserReturn!]!
         findBan(isBan: Boolean!): [UserReturn!]!
         findManagers(isManager: Boolean!): [UserReturn!]!
         findByLogin(login: String!): [UserReturn!]!
+        login(email: String!, password: String!): AuthData!
     }
 
     type RootMutation {

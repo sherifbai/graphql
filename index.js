@@ -23,7 +23,17 @@ app.use((req, res, next) => {
 app.use('/graphql', graphqlHTTP({
     schema: graphqlSchema,
     rootValue: graphqlResolves,
-    graphiql: true
+    graphiql: true,
+    customFormatErrorFn (error) {
+        if (!error.originalError){
+            return error
+        }
+        const data = error.originalError.data
+        const message = error.message || "An error occurred "
+        const code = error.originalError.code
+
+        return {data: data, status: code, message: message}
+    }
 }))
 
 
