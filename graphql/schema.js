@@ -25,8 +25,13 @@ module.exports = buildSchema(`
         birthDate: String!
     }
     
+    type FindByLogin {
+        login: String!
+        email: String!
+    }
+    
     type RootQuery {
-        hello: String!
+        findByLogin(login: String!): [FindByLogin!]!
     }
 
     type RootMutation {

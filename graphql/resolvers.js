@@ -36,5 +36,10 @@ module.exports = {
             ...createdUser._doc,
             _id: createdUser._id.toString()
         }
+    },
+    findByLogin: async function({ login }, req) {
+        const user = await User.find({login: login})
+
+        return user
     }
 }
