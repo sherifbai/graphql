@@ -51,5 +51,10 @@ module.exports = {
         const user = await User.find({isBan: isBan})
 
         return user
+    },
+    findUser: async function({ isBan, isManager, login}, req) {
+        const user = await User.find({isBan: isBan, isManager: isManager, login: login})
+
+        return user
     }
 }

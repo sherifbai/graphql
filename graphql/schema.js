@@ -31,6 +31,7 @@ module.exports = buildSchema(`
     }
     
     type RootQuery {
+        findUser(login: String! isManager: Boolean! isBan: Boolean!): [UserReturn!]!
         findBan(isBan: Boolean!): [UserReturn!]!
         findManagers(isManager: Boolean!): [UserReturn!]!
         findByLogin(login: String!): [UserReturn!]!
