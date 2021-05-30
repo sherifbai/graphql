@@ -30,7 +30,13 @@ module.exports = buildSchema(`
         email: String!
     }
     
+    type FindManagers  {
+        login: String!
+        email: String!
+    }
+    
     type RootQuery {
+        findManagers(isManager: Boolean!): [FindManagers!]!
         findByLogin(login: String!): [FindByLogin!]!
     }
 
