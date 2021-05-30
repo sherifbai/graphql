@@ -25,19 +25,15 @@ module.exports = buildSchema(`
         birthDate: String!
     }
     
-    type FindByLogin {
-        login: String!
-        email: String!
-    }
-    
-    type FindManagers  {
+    type UserReturn {
         login: String!
         email: String!
     }
     
     type RootQuery {
-        findManagers(isManager: Boolean!): [FindManagers!]!
-        findByLogin(login: String!): [FindByLogin!]!
+        findBan(isBan: Boolean!): [UserReturn!]!
+        findManagers(isManager: Boolean!): [UserReturn!]!
+        findByLogin(login: String!): [UserReturn!]!
     }
 
     type RootMutation {

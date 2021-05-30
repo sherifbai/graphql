@@ -42,8 +42,13 @@ module.exports = {
 
         return user
     },
-    findManagers: async function({isManager}, req) {
+    findManagers: async function({ isManager }, req) {
         const user = await User.find({isManager: isManager})
+
+        return user
+    },
+    findBan: async function({ isBan }, req) {
+        const user = await User.find({isBan: isBan})
 
         return user
     }
